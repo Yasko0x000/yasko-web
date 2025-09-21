@@ -1,120 +1,150 @@
-<!DOCTYPE html>          <!--Cette ligne nous permes d'eviter de passer en quirks mode lors du rendu d'un document-->
+<!DOCTYPE html>
 <html lang="fr">
-<head>                   <!--La variable "head" c'est pour reperer l'entete du site, on y met tout les bases du site sans qu'il ne sois concretement visible sur le site (sauf pour le title et le favicon)-->
-	<title>Parcours Scolaire</title>                                                        <!-- Variable titre -->
-  <meta charset="utf-8">                                                        <!-- L'encodage utf-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">        <!-- L'élément de métadonnées du document -->
-	<link rel="stylesheet" type="text/css" href="css/menu.css">                   <!-- Les suivantes 4 lignes sont des liaison pour le bon fonctionnement de mon site -->
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-
-  <link rel="icon" type="image/png" href="img/yasko_logo.png" />
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chronologie du parcours scolaire de Yassine EL HAMIOUI, du collège en Italie au BUT Réseaux & Télécommunications.">
+  <title>Parcours scolaire · Yassine EL HAMIOUI</title>
+  <link rel="icon" type="image/png" href="img/yasko_logo.png">
+  <link rel="stylesheet" href="css/main.css">
 </head>
-
-
-<body>                                    <!-- A partir de cette variable jusqu'a sa fermeture, il y'aura tout le contenu du site-->
-
-  <header>      <!--En tete-->
-
-    <h1>  <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine">                                       <!-- La balise h1 est pour repérer un titre dans une page-->
-      <b>Mon Parcours Scolaire </b>                  <!-- <b> nous permet de mettre en gras un texte-->
-        <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine">  
-      </h1>
-    </header>
-
-  <input type="checkbox" id="check_menu" >       <!-- La balise imput a la fonctionnalité de créer un contrôle interactif dans un formulaire web qui permet à l'utilisateur de saisir des données, dans mon cas sous forme de box -->
-      <nav class="header">                               <!-- Nav est une balise destinée à la navigation, mais dans mon paragraphe cela concerne le menu burger -->
-      	<div class="h-left">
-      		<label for="check_menu">                       <!-- label c'est une legende ou bien une étiquette -->
-      			<i class="fa fa-bars"></i>                   <!-- <i> représente un morceau de texte qui se différencie du texte principal (au lieu de <p>) -->
-      		</label>
-      	</div>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">
+        <img src="img/yasko_logo.png" alt="Logo de Yassine EL HAMIOUI">
+        <span>Yassine EL HAMIOUI</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Ouvrir le menu principal</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="primary-navigation">
+        <a href="index.html">Accueil</a>
+        <a href="bio.html">Biographie</a>
+        <a href="centre.html">Centres d'intérêt</a>
+        <a class="active" href="parcours-scolaire.html">Parcours scolaire</a>
+        <a href="pro.html">Projet professionnel</a>
+        <a class="cta" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Mon CV</a>
       </nav>
-
-<div class="sidebar">                                    <!-- <div> est une balise qui permet de creer une division ou bien un conteneur, il ne change pas la mise en forme du site, sauf comme dans mon cas, j'ai rajoité une class pour crée une reference pour ensuite la modifier dans le css (stylesheet)-->
-     <div class="sidebar_close">
-        <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine">        <!-- La variable img nous permet d'inserer une image peut importe son format (png, jpg, jpeg,etc), il est utile de mettre un alt="" est mettre a l'interieur un texte qui va s'afficher en cas d'erreur-->
-        <label for="check_menu"><i class="fa fa-close"></i></label>
-     </div>
-     
-	<div class="nav-list">
-		    <a class="micon" href="index.html"><i class="fa fa-home ic"></i><span>Accueil</span> </a>     <!-- <a> cela permet de crée des lien, il y'a donc tres souvent un href="" qui va donc contenir le chemin du lien souhaité, cette explication est valable pour les 5 lignes suivantes-->
-        <a class="micon" href="bio.html"><i class="fa fa-user-secret" aria-hidden="true"></i><span>Biographie</span></a>
-		    <a class="micon" href="centre.html"><i class="fa fa-superpowers" aria-hidden="true"></i><span>Centre d'interet </span></a>
-        <a class="micon" href="parcours-scolaire.html"><i class="fa fa-book"></i><span>Parcours scolaire</span></a>
-        <a class="micon" href="pro.html"><i class="fa fa-briefcase"></i><span>Projet Professionel</span></a>
-        <a class="micon" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank"><i class="fa fa-user-circle-o"></i><span>Mon CV</span></a>
-        <br><br><br>   <!-- Cette ligne me permet de mettre a la ligne une variable, dans mon cas je l'ai utilisé plusieurs fois pour eviter de toucher à cela dans css -->
     </div>
-    <p style="padding-left: 15px;">Musique tranquille pour faciliter la lecture</p>
-    <audio controls>
-      <source src="img/sake.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-    </audio>
-</div>
+  </header>
 
-<!--Follereau -->
-<div class="profil-Bac">
-  <img class="pp-Bac" src="img/Diplome_Bac.jpg" alt="">
+  <main>
+    <section class="hero inner-hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Parcours scolaire</p>
+        <h1>Des études au croisement des cultures et des technologies</h1>
+        <p>Chaque étape de ma scolarité m'a permis d'affiner mon orientation vers les réseaux et la cybersécurité, tout en consolidant des compétences humaines essentielles.</p>
+      </div>
+    </section>
 
-  <h3>Lyc&eacute;e Raoul Follereau (2019-2021)</h3>
-  <p>
-  <ul>
-  <li class="bac"><strong><em><span style="color: #ffffff; font-size: 18px;">Premi&egrave;re et Terminale Technologique, STI2D sp&eacute;cialit&eacute; de
-  Syst&egrave;me d'Information et Num&eacute;rique, physique-chimie et math&eacute;matiques.</span></em></strong></li>
-  <li class="bac"><strong><em><span style="color: #ffffff; font-size: 18px;"><br>Obtention du Baccalaur&eacute;at mention assez bien.</span></em></strong></li>
-  </ul>
-  <br>
-  <h3>Lyc&eacute;e Gustave Courbet (2018-2019)</h3>
-  <div>
-  <ul>
-  <li class="bac"><strong><em><span style="color: #ffffff; font-size: 18px;">Seconde G&eacute;n&eacute;rale, option Sciences &Eacute;conomique et
-  sociales, Biotechnologie.</span></em></strong></li>
-  </ul>
-  <p>&nbsp;</p>
-  </div>
-  <div class="gtx-trans" style="position: absolute; left: 20px; top: 180.172px;"></div>
-</div>
-<br><br><br><hr>
-<!--Fin-->
+    <section class="section surface">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Chronologie de mes études</h2>
+          <p>De la Scuola Media en Italie au BUT Réseaux &amp; Télécommunications, découvrez les jalons qui ont façonné mon profil.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-date">2022 - aujourd'hui</span>
+            <h3>BUT Réseaux &amp; Télécommunications · Université de Franche-Comté (Montbéliard)</h3>
+            <p>Spécialisation en architecture réseau, cybersécurité et services numériques. Participation active aux projets tutorés et aux travaux pratiques.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">2019 - 2021</span>
+            <h3>Lycée Raoul Follereau · Baccalauréat STI2D</h3>
+            <p>Spécialité Systèmes d'information et numérique, mathématiques et physique-chimie. Obtention du baccalauréat avec mention Assez Bien.</p>
+            <figure>
+              <img src="img/Diplome_Bac.jpg" alt="Diplôme du baccalauréat de Yassine EL HAMIOUI">
+              <figcaption>Une étape déterminante qui a confirmé mon intérêt pour les technologies.</figcaption>
+            </figure>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">2018 - 2019</span>
+            <h3>Lycée Gustave Courbet · Seconde générale</h3>
+            <p>Découverte de nouvelles disciplines à travers l'option Sciences Économiques et Sociales ainsi que la biotechnologie.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">2016 - 2018</span>
+            <h3>Collège Arthur Rimbaud</h3>
+            <p>Obtention du Diplôme National du Brevet et consolidation de ma maîtrise du français et des matières scientifiques.</p>
+            <figure>
+              <img src="img/Diplome_Brevet.jpg" alt="Diplôme national du brevet de Yassine EL HAMIOUI">
+              <figcaption>Premières réussites scolaires en France après mon arrivée depuis l'Italie.</figcaption>
+            </figure>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">2014 - 2016</span>
+            <h3>Scuola Media Macrino · Alba, Italie</h3>
+            <p>Études en Italie jusqu'à la fin du collège. Cette expérience m'a permis de développer une culture européenne et une maîtrise de l'italien.</p>
+            <p><a class="text-link" href="Giustificativo_Scolastico.pdf" target="_blank" rel="noopener">Télécharger mon justificatif scolaire italien <span aria-hidden="true">→</span></a></p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="container grid-two">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🧰</div>
+          <h3>Compétences développées</h3>
+          <ul class="feature-list">
+            <li>Approche scientifique solide en mathématiques, physique et systèmes d'information.</li>
+            <li>Culture numérique et méthodologie de projet issues du STI2D et du BUT.</li>
+            <li>Autonomie, rigueur et communication renforcées par les travaux de groupe.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">🌐</div>
+          <h3>Ouverture internationale</h3>
+          <p>Mes années passées en Italie et mes voyages réguliers en Europe ont développé ma capacité à travailler dans des contextes plurilingues et à m'adapter rapidement.</p>
+          <ul class="feature-list">
+            <li>Maîtrise du français et de l'italien.</li>
+            <li>Compréhension des langues romanes et de l'anglais technique.</li>
+            <li>Curiosité pour les cultures et leur impact sur les usages numériques.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<div class="profil-Brevet">
-<img class="pp-Brevet" src="img/Diplome_Brevet.jpg" alt="" >
+    <section class="section surface">
+      <div class="container split">
+        <div>
+          <h2>Cap sur l'avenir</h2>
+          <p class="lead">Mon parcours scolaire est le socle sur lequel je construis mon projet professionnel. Il reflète ma volonté de lier compétences techniques et dimension humaine.</p>
+        </div>
+        <div class="callout">
+          <h3>Besoin de plus d'informations&nbsp;?</h3>
+          <p>Consultez mon CV pour découvrir mes expériences complémentaires et mes projets académiques.</p>
+          <a class="btn primary" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<h3>Coll&egrave;ge Arthur Rimbaud&nbsp; (2016-2018)</h3>
-<p>
-<ul>
-<li><span  id="brevet" style="color: #ffffff; font-size: 18px">Obtention du Dipl&ocirc;me National du Brevet.</span></li>
-</ul>
-<div>
-<p>&nbsp;</p>
-</div>
-<div id="gtx-trans" style="position: absolute; left: -146px; top: -20px;"></div>
-<br><br><br><br><br><br><br><br>
-</div>
-<hr>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="img/yasko_logo.png" alt="Logo de Yassine EL HAMIOUI">
+          <span>Yassine EL HAMIOUI</span>
+        </a>
+        <p class="footer-text">Portfolio personnel réalisé pour mettre en lumière mon parcours, mes compétences et mes aspirations professionnelles.</p>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Biographie</a>
+        <a href="centre.html">Centres d'intérêt</a>
+        <a class="active" href="parcours-scolaire.html">Parcours scolaire</a>
+        <a href="pro.html">Projet professionnel</a>
+        <a href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Mon CV</a>
+      </div>
+    </div>
+    <p class="footer-note">© <span id="current-year"></span> Yassine EL HAMIOUI · Tous droits réservés.</p>
+  </footer>
 
-<div class="profil-Italia">
-  <img class="pp-Italia" src="img/scuola.png" alt="">
-  <h3>Scuola Media Macrino, Alba&nbsp; (2014-2016)</h3>
-<p>
-<ul>
-<li><span id="scuola" style="color: #ffffff; font-size: 18px">J'ai &eacute;tudi&eacute; en Italie jusqu'&agrave; la cinquieme. <a style="font-size: 12px" target="_blank" href="Giustificativo_Scolastico.pdf">(Appuyez pour t&eacute;l&eacute;charger mon justificatif scolaire)</a></span></li>
-</ul>
-<div>
-<p>&nbsp;</p>
-</div>
- 
-  <br><br><br><br><br><br><br><br><br><br>
-  </div>
-
-<footer>                                                          <!-- le pied de page -->
-
-</footer>
-
-
-
+  <script src="js/main.js"></script>
 </body>
 </html>

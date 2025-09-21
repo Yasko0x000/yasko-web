@@ -1,86 +1,188 @@
-<!DOCTYPE html>          <!--Cette ligne nous permes d'eviter de passer en quirks mode lors du rendu d'un document-->
+<!DOCTYPE html>
 <html lang="fr">
-<head>                   <!--La variable "head" c'est pour reperer l'entete du site, on y met tout les bases du site sans qu'il ne sois concretement visible sur le site (sauf pour le title et le favicon)-->
-	<title>Accueil</title>                                                        <!-- Variable titre -->
-  <meta charset="utf-8">                                                        <!-- L'encodage utf-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">        <!-- L'élément de métadonnées du document -->
-	<link rel="stylesheet" type="text/css" href="css/menu.css">                   <!-- Les suivantes 4 lignes sont des liaison pour le bon fonctionnement de mon site -->
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-  
-
-  <link rel="icon" type="image/png" href="img/yasko_logo.png" />
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Yassine EL HAMIOUI, étudiant en BUT Réseaux & Télécommunications passionné par la cybersécurité et l'innovation numérique.">
+  <title>Yassine EL HAMIOUI · Portfolio</title>
+  <link rel="icon" type="image/png" href="img/yasko_logo.png">
+  <link rel="stylesheet" href="css/main.css">
 </head>
-
-
-<body>                                    <!-- A partir de cette variable jusqu'a sa fermeture, il y'aura tout le contenu du site-->
-
-  <header>      <!--En tete-->
-
-    <h1>  <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine">                                      <!-- La balise h1 est pour repérer un titre dans une page-->
-      <b>Yassine EL HAMIOUI </b>                  <!-- <b> nous permet de mettre en gras un texte-->
-        <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine"> 
-      </h1>
-    </header>
-
-  <input type="checkbox" id="check_menu" >       <!-- La balise imput a la fonctionnalité de créer un contrôle interactif dans un formulaire web qui permet à l'utilisateur de saisir des données, dans mon cas sous forme de box -->
-      <nav class="header">                               <!-- Nav est une balise destinée à la navigation, mais dans mon paragraphe cela concerne le menu burger -->
-      	<div class="h-left">
-      		<label for="check_menu">                       <!-- label c'est une legende ou bien une étiquette -->
-      			<i class="fa fa-bars"></i>                   <!-- <i> représente un morceau de texte qui se différencie du texte principal (au lieu de <p>) -->
-      		</label>
-      	</div>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">
+        <img src="img/yasko_logo.png" alt="Logo de Yassine EL HAMIOUI">
+        <span>Yassine EL HAMIOUI</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Ouvrir le menu principal</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="primary-navigation">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="bio.html">Biographie</a>
+        <a href="centre.html">Centres d'intérêt</a>
+        <a href="parcours-scolaire.html">Parcours scolaire</a>
+        <a href="pro.html">Projet professionnel</a>
+        <a class="cta" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Mon CV</a>
       </nav>
-
-<div class="sidebar">                                    <!-- <div> est une balise qui permet de creer une division ou bien un conteneur, il ne change pas la mise en forme du site, sauf comme dans mon cas, j'ai rajoité une class pour crée une reference pour ensuite la modifier dans le css (stylesheet)-->
-     <div class="sidebar_close">
-        <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine">          <!-- La variable img nous permet d'inserer une image peut importe son format (png, jpg, jpeg,etc), il est utile de mettre un alt="" est mettre a l'interieur un texte qui va s'afficher en cas d'erreur-->
-        <label for="check_menu"><i class="fa fa-close"></i></label>
-     </div>
-     
-	<div class="nav-list">
-		    <a class="micon" href="index.html"><i class="fa fa-home ic"></i><span>Accueil</span> </a>     <!-- <a> cela permet de crée des lien, il y'a donc tres souvent un href="" qui va donc contenir le chemin du lien souhaité, cette explication est valable pour les 5 lignes suivantes-->
-        <a class="micon" href="bio.html"><i class="fa fa-user-secret" aria-hidden="true"></i><span>Biographie</span></a>
-		    <a class="micon" href="centre.html"><i class="fa fa-superpowers" aria-hidden="true"></i><span>Centre d'interet </span></a>
-        <a class="micon" href="parcours-scolaire.html"><i class="fa fa-book"></i><span>Parcours scolaire</span></a>
-        <a class="micon" href="pro.html"><i class="fa fa-briefcase"></i><span>Projet Professionel</span></a>
-        <a class="micon" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank"><i class="fa fa-user-circle-o"></i><span>Mon CV</span></a>
-        <br><br><br>   <!-- Cette ligne me permet de mettre a la ligne une variable, dans mon cas je l'ai utilisé plusieurs fois pour eviter de toucher à cela dans css -->
     </div>
-    <p style="padding-left: 15px;">Musique tranquille pour faciliter la lecture</p>
-    <audio controls>
-      <source src="img/sake.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-    </audio>
-</div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Étudiant en BUT Réseaux & Télécommunications</p>
+        <h1>Construire des expériences numériques sûres, performantes et humaines</h1>
+        <p>Je m'appelle Yassine EL HAMIOUI. Curieux de nature, je combine ma passion pour la cybersécurité, la performance réseau et l'expérience utilisateur afin d'imaginer des solutions fiables et accessibles. Ce portfolio retrace mon parcours, mes inspirations et ma vision du numérique.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Télécharger mon CV</a>
+          <a class="btn ghost" href="#explorer">Explorer mon univers</a>
+        </div>
+      </div>
+    </section>
 
-<h2>                                        <!-- La balise h2 est pour repérer un titre dans une page, mais de moins importance-->
-  Bienvenue dans mon site, vous êtes sur la page d'accueil
-</h2>
+    <section class="section" id="explorer">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Explorer mon univers</h2>
+          <p>Découvrez les facettes qui façonnent ma personnalité et mon ambition professionnelle. Chaque page approfondit un pilier de mon parcours&nbsp;: mon histoire, mes passions, mes études et mes objectifs.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📘</div>
+            <h3>Biographie</h3>
+            <p>De l'Italie à la France, découvrez le cheminement qui m'a conduit vers les réseaux et la cybersécurité.</p>
+            <a class="text-link" href="bio.html">Lire ma biographie <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧭</div>
+            <h3>Centres d'intérêt</h3>
+            <p>Entre défis de cybersécurité et culture automobile, mes passions nourrissent ma créativité technique.</p>
+            <a class="text-link" href="centre.html">Plonger dans mes passions <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎓</div>
+            <h3>Parcours scolaire</h3>
+            <p>Un parcours riche en découvertes scientifiques qui consolide mes compétences techniques et humaines.</p>
+            <a class="text-link" href="parcours-scolaire.html">Suivre mon parcours <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🚀</div>
+            <h3>Projet professionnel</h3>
+            <p>Mon ambition&nbsp;: devenir expert en cybersécurité et contribuer à un numérique plus sûr pour tous.</p>
+            <a class="text-link" href="pro.html">Comprendre ma vision <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section surface">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Compétences clés</h2>
+          <p>Ma formation et mes expériences personnelles m'ont permis de développer un socle solide de compétences techniques et humaines, indispensables aux métiers des réseaux et de la cybersécurité.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Cybersécurité offensive &amp; défensive</h3>
+            <ul class="feature-list">
+              <li>Participation régulière à des challenges CTF pour renforcer mon esprit d'analyse.</li>
+              <li>Veille technologique continue pour comprendre les menaces émergentes.</li>
+              <li>Culture de la sécurité centrée sur l'éthique et la protection des utilisateurs.</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>Réseaux &amp; télécommunications</h3>
+            <ul class="feature-list">
+              <li>Maîtrise des bases de la configuration réseau, du routage et des protocoles.</li>
+              <li>Approche pragmatique des infrastructures grâce aux travaux pratiques du BUT.</li>
+              <li>Capacité à vulgariser des concepts techniques pour faciliter la collaboration.</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>Qualités humaines</h3>
+            <ul class="feature-list">
+              <li>Autonomie, adaptabilité et curiosité culturelle acquises au fil de mes voyages.</li>
+              <li>Sens du collectif renforcé par les projets de groupe et les compétitions.</li>
+              <li>Goût du défi et persévérance pour atteindre des objectifs ambitieux.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<p class="push">                            <!-- cette balise permet de faire un texte simple -->
-  Veuillez appuyer sur la case qui vous interesse 
-</p>
-    <div class="frame">
-      <a href="bio.html"> <button class="custom-btn btn">Biographie</button></a>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Parcours en un coup d'œil</h2>
+          <p>Chaque étape de mon parcours m'a permis d'affiner mes objectifs professionnels et de confirmer mon envie d'évoluer dans l'univers de la cybersécurité.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-date">2022 - aujourd'hui</span>
+            <h3>BUT Réseaux &amp; Télécommunications · Université de Franche-Comté</h3>
+            <p>Approfondissement des architectures réseau, de la cybersécurité et des services numériques collaboratifs.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">2019 - 2021</span>
+            <h3>Baccalauréat STI2D spécialité Systèmes d'information &amp; numérique</h3>
+            <p>Découverte des fondamentaux de l'électronique, de la programmation et des architectures techniques.</p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-date">Avant 2019</span>
+            <h3>Parcours international</h3>
+            <p>Études entre l'Italie et la France qui enrichissent ma vision multiculturelle et mon adaptabilité.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <a href="centre.html"> <button class="custom-btn btn"><span>Centre d'interet</span></button></a>
+    <section class="section surface">
+      <div class="container split">
+        <div>
+          <div class="section-heading">
+            <h2>Une vision tournée vers l'avenir</h2>
+            <p>Je souhaite mettre mes compétences au service d'organisations qui placent la sécurité, l'innovation et l'humain au cœur de leurs projets.</p>
+          </div>
+          <ul class="feature-list">
+            <li>Relever des défis techniques au sein d'équipes pluridisciplinaires.</li>
+            <li>Contribuer à des projets à impact social et sociétal.</li>
+            <li>Partager ma passion en vulgarisant la cybersécurité auprès du plus grand nombre.</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <h3>Envie de collaborer&nbsp;?</h3>
+          <p>Vous avez un projet, un stage ou un défi à proposer&nbsp;? Je suis toujours partant pour échanger autour de nouvelles opportunités.</p>
+          <a class="btn primary" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Consulter mon CV</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-      <a href="pro.html"> <button class="custom-btn btn"><span> Parcours scolaire </span></button></a>
-
-      <a href="pro.html"> <button class="custom-btn btn"><span>Projet Professionel</span></button></a>
-
-      <a href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank"> <button class="custom-btn btn"><span>Telecharger mon cv</span></button></a>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="img/yasko_logo.png" alt="Logo de Yassine EL HAMIOUI">
+          <span>Yassine EL HAMIOUI</span>
+        </a>
+        <p class="footer-text">Portfolio personnel réalisé pour mettre en lumière mon parcours, mes compétences et mes aspirations professionnelles.</p>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Biographie</a>
+        <a href="centre.html">Centres d'intérêt</a>
+        <a href="parcours-scolaire.html">Parcours scolaire</a>
+        <a href="pro.html">Projet professionnel</a>
+        <a href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Mon CV</a>
+      </div>
     </div>
+    <p class="footer-note">© <span id="current-year"></span> Yassine EL HAMIOUI · Tous droits réservés.</p>
+  </footer>
 
-<footer>                                                          <!-- le pied de page -->
-
-</footer>
-
-
-
+  <script src="js/main.js"></script>
 </body>
 </html>
