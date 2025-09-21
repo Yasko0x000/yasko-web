@@ -1,73 +1,150 @@
-<!DOCTYPE html>          <!--Cette ligne nous permes d'eviter de passer en quirks mode lors du rendu d'un document-->
+<!DOCTYPE html>
 <html lang="fr">
-<head>                   <!--La variable "head" c'est pour reperer l'entete du site, on y met tout les bases du site sans qu'il ne sois concretement visible sur le site (sauf pour le title et le favicon)-->
-	<title>Ma Biographie</title>                                                        <!-- Variable titre -->
-  <meta charset="utf-8">                                                        <!-- L'encodage utf-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">        <!-- L'élément de métadonnées du document -->
-	<link rel="stylesheet" type="text/css" href="css/menu.css">                   <!-- Les suivantes 4 lignes sont des liaison pour le bon fonctionnement de mon site -->
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-
-  <link rel="icon" type="image/png" href="img/yasko_logo.png" />
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Biographie de Yassine EL HAMIOUI, étudiant en réseaux & télécommunications passionné de cybersécurité et d'automobile.">
+  <title>Biographie · Yassine EL HAMIOUI</title>
+  <link rel="icon" type="image/png" href="img/yasko_logo.png">
+  <link rel="stylesheet" href="css/main.css">
 </head>
-
-
-<body>                                    <!-- A partir de cette variable jusqu'a sa fermeture, il y'aura tout le contenu du site-->
-
-  <header>      <!--En tete-->
-
-    <h1>  <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine">                                      <!-- La balise h1 est pour repérer un titre dans une page-->
-      <b>Qui suis-je ? </b>                  <!-- <b> nous permet de mettre en gras un texte-->
-        <img class="logo" src="img/yasko_logo.png" alt="Logo-Yassine"> 
-      </h1>
-    </header>
-  <input type="checkbox" id="check_menu" >       <!-- La balise imput a la fonctionnalité de créer un contrôle interactif dans un formulaire web qui permet à l'utilisateur de saisir des données, dans mon cas sous forme de box -->
-      <nav class="header">                               <!-- Nav est une balise destinée à la navigation, mais dans mon paragraphe cela concerne le menu burger -->
-      	<div class="h-left">
-      		<label for="check_menu">                       <!-- label c'est une legende ou bien une étiquette -->
-      			<i class="fa fa-bars"></i>                   <!-- <i> représente un morceau de texte qui se différencie du texte principal (au lieu de <p>) -->
-      		</label>
-      	</div>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html">
+        <img src="img/yasko_logo.png" alt="Logo de Yassine EL HAMIOUI">
+        <span>Yassine EL HAMIOUI</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="sr-only">Ouvrir le menu principal</span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="primary-navigation">
+        <a href="index.html">Accueil</a>
+        <a class="active" href="bio.html">Biographie</a>
+        <a href="centre.html">Centres d'intérêt</a>
+        <a href="parcours-scolaire.html">Parcours scolaire</a>
+        <a href="pro.html">Projet professionnel</a>
+        <a class="cta" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Mon CV</a>
       </nav>
-
-<div class="sidebar">                                    <!-- <div> est une balise qui permet de creer une division ou bien un conteneur, il ne change pas la mise en forme du site, sauf comme dans mon cas, j'ai rajoité une class pour crée une reference pour ensuite la modifier dans le css (stylesheet)-->
-     <div class="sidebar_close">
-        <img class="" src="img/yasko_logo.png" alt="Logo-Yassine">          <!-- La variable img nous permet d'inserer une image peut importe son format (png, jpg, jpeg,etc), il est utile de mettre un alt="" est mettre a l'interieur un texte qui va s'afficher en cas d'erreur-->
-        <label for="check_menu"><i class="fa fa-close"></i></label>
-     </div>
-     
-	<div class="nav-list">
-		    <a class="micon" href="index.html"><i class="fa fa-home ic"></i><span>Accueil</span> </a>     <!-- <a> cela permet de crée des lien, il y'a donc tres souvent un href="" qui va donc contenir le chemin du lien souhaité, cette explication est valable pour les 5 lignes suivantes-->
-        <a class="micon" href="bio.html"><i class="fa fa-user-secret" aria-hidden="true"></i><span>Biographie</span></a>
-		    <a class="micon" href="centre.html"><i class="fa fa-superpowers" aria-hidden="true"></i><span>Centre d'interet </span></a>
-        <a class="micon" href="parcours-scolaire.html"><i class="fa fa-book"></i><span>Parcours scolaire</span></a>
-        <a class="micon" href="pro.html"><i class="fa fa-briefcase"></i><span>Projet Professionel</span></a>
-        <a class="micon" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank"><i class="fa fa-user-circle-o"></i><span>Mon CV</span></a>
-        <br><br><br>   <!-- Cette ligne me permet de mettre a la ligne une variable, dans mon cas je l'ai utilisé plusieurs fois pour eviter de toucher à cela dans css -->
     </div>
-    <p style="padding-left: 15px;">Musique tranquille pour faciliter la lecture</p>
-    <audio controls>
-      <source src="img/sake.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-    </audio>
-</div>
+  </header>
 
+  <main>
+    <section class="hero inner-hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Biographie</p>
+        <h1>Le parcours d'un passionné de cultures et de technologies</h1>
+        <p>De l'Italie à la France, ma trajectoire est faite de rencontres, de voyages et d'expériences qui ont forgé mon ouverture d'esprit. Aujourd'hui, j'investis cette richesse culturelle dans ma vocation pour la cybersécurité et les réseaux.</p>
+      </div>
+    </section>
 
+    <section class="section surface">
+      <div class="container split">
+        <div>
+          <div class="section-heading">
+            <h2>Une identité nourrie par les voyages</h2>
+            <p>Grandir entre plusieurs pays m'a appris l'adaptabilité, la curiosité et le respect des cultures. Ce mélange façonne ma manière d'aborder les projets et de collaborer avec les autres.</p>
+          </div>
+          <p>Né au Maroc et ayant grandi en Italie jusqu'à mes 12 ans, j'ai ensuite poursuivi mes études en France. Ces différentes expériences m'ont permis d'apprendre plusieurs langues, de comprendre de nouvelles cultures et de développer une grande capacité d'adaptation. Chaque déménagement a été l'occasion de repartir de zéro, de tisser de nouveaux liens et de trouver ma place.</p>
+          <p>Cette ouverture m'accompagne dans mes études en réseaux et télécommunications. Elle nourrit mon envie de travailler dans des équipes pluridisciplinaires et internationales, où les idées circulent et se confrontent pour faire émerger des solutions innovantes.</p>
+          <ul class="feature-list">
+            <li>Langues parlées&nbsp;: français, italien, arabe et compréhension des langues romanes.</li>
+            <li>Esprit d'équipe forgé par les projets collaboratifs et les compétitions en cybersécurité.</li>
+            <li>Capacité à apprendre vite et à transformer chaque défi en opportunité de croissance.</li>
+          </ul>
+        </div>
+        <figure>
+          <img src="https://pbs.twimg.com/profile_images/1220400180585009158/yP_mZH9Q_400x400.jpg" alt="Portrait de Yassine EL HAMIOUI">
+          <figcaption>Une curiosité sans frontières pour la technologie, l'automobile et les cultures.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-<div class="profil-primo">
-    <img class="pp-primo" src="https://pbs.twimg.com/profile_images/1220400180585009158/yP_mZH9Q_400x400.jpg" alt="">
-    <p><span style="color: #ecf0f1;"><em>Je m&rsquo;appelle <span style="color: #95a5a6;">Yassine EL HAMIOUI</span>, j&rsquo;ai actuellement 19 ans et je suis &eacute;tudiant &agrave; l&rsquo;universit&eacute; de Franche-comt&eacute; &agrave; Montb&eacute;liard. Je suis en premi&egrave;re ann&eacute;e du BUT R&eacute;seau &amp; T&eacute;l&eacute;com. Je suis passionn&eacute; par l&rsquo;informatique depuis mon plus jeune &acirc;ge. J&rsquo;en suis qu&rsquo;au d&eacute;but de l'obtention de mon dipl&ocirc;me, j&rsquo;ai bien fait de choisir ce parcours, cependant mon vrai int&eacute;r&ecirc;t est le parcours <span style="color: #95a5a6;">cybers&eacute;curit&eacute;</span>. J&rsquo;ai pu acqu&eacute;rir de nombreuses comp&eacute;tences et cela est en &eacute;volution continue.<br><br> Cependant, je poss&egrave;de un autre centre d&rsquo;int&eacute;r&ecirc;t en parall&egrave;le. J&rsquo;adore les voitures et la m&eacute;canique. Avec deux passions y en a forc&eacute;ment une qu&rsquo;&eacute;crase l&rsquo;autre, c&rsquo;est ce qui a fait que j&rsquo;ai choisis un parcours informatique. Je n&rsquo;ai pas toujours v&eacute;cu en France, j&rsquo;ai v&eacute;cu en Italie jusqu&rsquo;&agrave; l&rsquo;&acirc;ge de mes 12 ans, je parle donc couramment l&rsquo;italien. J&rsquo;ai beaucoup voyag&eacute; dans ma vie, en principale pour visiter ma famille qui vivait en France, en Espagne, en Suisse et au Maroc. Voyager dans tous ces pays m&rsquo;a donn&eacute; la capacit&eacute; de comprendre (plus ou moins) les langues romanes.</em></span></p>
-</div>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Les valeurs qui m'inspirent</h2>
+          <p>Au-delà des compétences techniques, ce sont mes valeurs humaines qui guident mon quotidien et mes relations professionnelles.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤝</div>
+            <h3>Authenticité</h3>
+            <p>Je privilégie des relations sincères, basées sur la confiance et le respect. J'aime partager mes connaissances et apprendre des autres pour avancer ensemble.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧠</div>
+            <h3>Curiosité</h3>
+            <p>Comprendre comment les systèmes fonctionnent et comment les améliorer alimente mon désir constant d'explorer de nouveaux domaines.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💡</div>
+            <h3>Créativité</h3>
+            <p>Qu'il s'agisse d'imaginer une solution technique ou de raconter une histoire, j'aime proposer des idées originales qui répondent aux besoins réels.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section surface">
+      <div class="container grid-two">
+        <div>
+          <div class="highlight">Mon mantra au quotidien</div>
+          <blockquote>
+            «&nbsp;Ne jamais cesser d'apprendre et de partager. C'est en transmettant que l'on consolide ses connaissances et que l'on inspire les autres à se dépasser.&nbsp;»
+          </blockquote>
+        </div>
+        <div>
+          <h2>Ce qui me motive</h2>
+          <p>Décrypter un système, trouver la faille et la corriger, aider une personne à comprendre un concept complexe&nbsp;: autant de défis qui me stimulent. Je suis convaincu que la technologie peut être un formidable vecteur de progrès lorsqu'elle est pensée avec éthique et simplicité.</p>
+          <p>Mon but est d'allier cette vision humaine avec les exigences techniques de la cybersécurité. Je souhaite évoluer dans des structures qui partagent cette volonté de protéger, d'éduquer et d'innover.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="container split">
+        <div>
+          <h2>Un profil international</h2>
+          <p class="lead">Mes expériences à l'étranger ont façonné ma manière de voir le monde. Elles me permettent d'aborder les projets avec sensibilité et empathie.</p>
+          <ul class="feature-list">
+            <li>Voyages réguliers en Espagne, en Suisse et au Maroc pour retrouver ma famille et découvrir de nouveaux horizons.</li>
+            <li>Capacité à comprendre rapidement de nouvelles cultures et à travailler avec des personnes de tous horizons.</li>
+            <li>Esprit ouvert et respect des différences, essentiels dans un contexte international.</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <h3>Envie d'échanger&nbsp;?</h3>
+          <p>Je serais ravi de discuter autour de projets, de voyages ou d'opportunités professionnelles. N'hésitez pas à me contacter.</p>
+          <a class="btn ghost" href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Toutes mes coordonnées</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="img/yasko_logo.png" alt="Logo de Yassine EL HAMIOUI">
+          <span>Yassine EL HAMIOUI</span>
+        </a>
+        <p class="footer-text">Portfolio personnel réalisé pour mettre en lumière mon parcours, mes compétences et mes aspirations professionnelles.</p>
+      </div>
+      <div class="footer-links">
+        <a class="active" href="bio.html">Biographie</a>
+        <a href="centre.html">Centres d'intérêt</a>
+        <a href="parcours-scolaire.html">Parcours scolaire</a>
+        <a href="pro.html">Projet professionnel</a>
+        <a href="Curriculum_Vitae-Yassine_EL-Hamioui.pdf" target="_blank" rel="noopener">Mon CV</a>
+      </div>
+    </div>
+    <p class="footer-note">© <span id="current-year"></span> Yassine EL HAMIOUI · Tous droits réservés.</p>
+  </footer>
 
-<footer>                                                          <!-- le pied de page -->
- 
-</footer>
-
-
-
+  <script src="js/main.js"></script>
 </body>
 </html>
