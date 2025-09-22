@@ -1,25 +1,20 @@
 export type UserRole = "master" | "student";
 
+export type ProgressStatus = "pending" | "in-progress" | "revised";
+
 export interface ProgressEntry {
   id: string;
   surah: string;
-  ayahs: string;
-  status: "revised" | "in-progress" | "pending";
-  lastReviewedAt: string;
+  status: ProgressStatus;
+  date: string;
+  note?: string;
+  feedbackMaster?: string;
 }
 
-export interface Feedback {
-  id: string;
-  authorRole: UserRole;
-  content: string;
-  createdAt: string;
-}
-
-export interface Student {
+export interface DashboardStudent {
   id: string;
   name: string;
   email: string;
-  enrolledAt: string;
+  createdAt: string;
   progress: ProgressEntry[];
-  feedback: Feedback[];
 }

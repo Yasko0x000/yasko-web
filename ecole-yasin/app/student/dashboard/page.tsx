@@ -1,64 +1,69 @@
+import { redirect } from "next/navigation";
+import ProgressTable from "./_components/ProgressTable";
 import ProgressItem from "@/components/ProgressItem";
-import FeedbackCard from "@/components/FeedbackCard";
-import { students } from "@/lib/mockData";
+import { getCurrentSession } from "@/lib/auth";
+import { connectDB } from "@/lib/mongodb";
+import ProgressModel from "@/lib/models/Progress";
+import type { ProgressEntry } from "@/types";
 
-const currentStudent = students[0];
+/**
+ * Charge les progressions stockées pour l'élève courant.
+ */
+async function loadProgress(studentId: string): Promise<ProgressEntry[]> {
+  await connectDB();
 
-const reminders = [
-  {
-    id: "r1",
-    title: "Révision du passage Ya-Sin 21-40",
-    date: "2024-02-15",
-    description: "Préparer la récitation complète pour la prochaine séance."
-  },
-  {
-    id: "r2",
-    title: "Mémorisation de Al-Mulk 11-20",
-    date: "2024-02-18",
-    description: "Mettre l’accent sur la prononciation des lettres emphatiques."
+  const progresses = await ProgressModel.find({ studentId })
+    .sort({ date: -1 })
+    .lean();
+
+  return progresses.map((progress) => ({
+    id: progress._id.toString(),
+    surah: progress.surah,
+    status: progress.status,
+    date: progress.date.toISOString(),
+    note: progress.note ?? undefined,
+    feedbackMaster: progress.feedbackMaster ?? undefined,
+  }));
+}
+
+export default async function StudentDashboardPage() {
+  const session = await getCurrentSession();
+
+  if (!session) {
+    redirect("/login");
   }
-];
 
-export default function StudentDashboardPage() {
+  if (session.user.role !== "student") {
+    redirect("/master/dashboard");
+  }
+
+  const progress = await loadProgress(session.user.id);
+  const feedbacks = progress.filter((item) => Boolean(item.feedbackMaster));
+
   return (
     <section className="space-y-12">
       <header className="space-y-2">
-        <h1 className="text-3xl font-bold text-primary-dark">Assalamu alaykoum, {currentStudent.name} 👋</h1>
+        <h1 className="text-3xl font-bold text-primary-dark">
+          Assalamu alaykoum, {session.user.name ?? "cher élève"} 👋
+        </h1>
         <p className="text-sm text-slate-600">
-          Voici vos progrès récents et les rappels envoyés par votre master. Continuez vos efforts !
+          Voici vos progrès récents. Mettez à jour vos révisions et suivez les retours de votre master.
         </p>
       </header>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold text-primary-dark">Mes progrès</h2>
-        <div className="grid gap-4">
-          {currentStudent.progress.map((progress) => (
-            <ProgressItem key={progress.id} progress={progress} />
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-4" id="rappels">
-        <h2 className="text-xl font-semibold text-primary-dark">Rappels & objectifs</h2>
-        <div className="grid gap-3 md:grid-cols-2">
-          {reminders.map((reminder) => (
-            <article key={reminder.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-400">
-                <span>À faire avant le</span>
-                <span>{new Date(reminder.date).toLocaleDateString("fr-FR")}</span>
-              </div>
-              <h3 className="mt-2 text-lg font-semibold text-slate-800">{reminder.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{reminder.description}</p>
-            </article>
-          ))}
-        </div>
+        <h2 className="text-xl font-semibold text-primary-dark">Mes sourates</h2>
+        <ProgressTable progress={progress} />
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold text-primary-dark">Commentaires du master</h2>
-        <div className="grid gap-3 md:grid-cols-2">
-          {currentStudent.feedback.map((feedback) => (
-            <FeedbackCard key={feedback.id} feedback={feedback} />
+        <h2 className="text-xl font-semibold text-primary-dark">Derniers retours du master</h2>
+        <div className="grid gap-4">
+          {feedbacks.length === 0 && (
+            <p className="text-sm text-slate-500">Aucun commentaire disponible pour le moment.</p>
+          )}
+          {feedbacks.map((item) => (
+            <ProgressItem key={item.id} progress={item} />
           ))}
         </div>
       </section>

@@ -6,11 +6,13 @@ interface NavLink {
 }
 
 const masterLinks: NavLink[] = [
+  { label: "Accueil", href: "/" },
   { label: "Tableau de bord", href: "/master/dashboard" },
   { label: "Ajouter un élève", href: "/master/dashboard#ajouter-eleve" }
 ];
 
 const studentLinks: NavLink[] = [
+  { label: "Accueil", href: "/" },
   { label: "Mon tableau de bord", href: "/student/dashboard" },
   { label: "Mes rappels", href: "/student/dashboard#rappels" }
 ];

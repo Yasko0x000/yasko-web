@@ -1,17 +1,83 @@
+import { redirect } from "next/navigation";
 import StudentCard from "@/components/StudentCard";
-import { students, masterProfile } from "@/lib/mockData";
+import AddStudentForm from "./_components/AddStudentForm";
+import { getCurrentSession } from "@/lib/auth";
+import { connectDB } from "@/lib/mongodb";
+import UserModel from "@/lib/models/User";
+import ProgressModel from "@/lib/models/Progress";
+import type { DashboardStudent, ProgressEntry } from "@/types";
 
-export default function MasterDashboardPage() {
+/**
+ * Charge les élèves du master et leurs progressions récentes.
+ */
+async function loadStudents(masterId: string): Promise<DashboardStudent[]> {
+  await connectDB();
+
+  const students = await UserModel.find({ role: "student", masterId })
+    .sort({ createdAt: -1 })
+    .lean();
+
+  const studentIds = students.map((student) => student._id);
+
+  const progresses = await ProgressModel.find({ studentId: { $in: studentIds } })
+    .sort({ date: -1 })
+    .lean();
+
+  const progressByStudent = new Map<string, ProgressEntry[]>();
+
+  progresses.forEach((progress) => {
+    const entry: ProgressEntry = {
+      id: progress._id.toString(),
+      surah: progress.surah,
+      status: progress.status,
+      date: progress.date.toISOString(),
+      note: progress.note ?? undefined,
+      feedbackMaster: progress.feedbackMaster ?? undefined,
+    };
+
+    const key = progress.studentId.toString();
+    const list = progressByStudent.get(key) ?? [];
+    list.push(entry);
+    progressByStudent.set(key, list);
+  });
+
+  return students.map((student) => ({
+    id: student._id.toString(),
+    name: student.name,
+    email: student.email,
+    createdAt: student.createdAt.toISOString(),
+    progress: progressByStudent.get(student._id.toString()) ?? [],
+  }));
+}
+
+export default async function MasterDashboardPage() {
+  const session = await getCurrentSession();
+
+  if (!session) {
+    redirect("/login");
+  }
+
+  if (session.user.role !== "master") {
+    redirect("/student/dashboard");
+  }
+
+  const students = await loadStudents(session.user.id);
+
   return (
     <section className="space-y-12">
       <header className="space-y-3">
         <h1 className="text-3xl font-bold text-primary-dark">Tableau de bord master</h1>
         <p className="text-sm text-slate-600">
-          {masterProfile.name}, voici un aperçu de vos élèves et un formulaire pour en ajouter de nouveaux.
+          Gérez vos élèves, consultez leurs progrès et créez de nouveaux comptes en quelques secondes.
         </p>
       </header>
 
       <div className="grid gap-6 md:grid-cols-2">
+        {students.length === 0 && (
+          <p className="text-sm text-slate-500">
+            Aucun élève pour le moment. Utilisez le formulaire ci-dessous pour inscrire votre premier élève.
+          </p>
+        )}
         {students.map((student) => (
           <StudentCard key={student.id} student={student} href={`/master/student/${student.id}`} />
         ))}
@@ -22,60 +88,7 @@ export default function MasterDashboardPage() {
         <p className="mt-2 text-sm text-slate-600">
           Remplissez les informations de base pour créer un compte élève. Les identifiants pourront ensuite être partagés directement.
         </p>
-        <form className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="space-y-2">
-            <label htmlFor="student-name" className="text-sm font-medium text-slate-700">
-              Nom complet
-            </label>
-            <input
-              id="student-name"
-              type="text"
-              placeholder="Nom de l’élève"
-              className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            />
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="student-email" className="text-sm font-medium text-slate-700">
-              Adresse email
-            </label>
-            <input
-              id="student-email"
-              type="email"
-              placeholder="eleve@exemple.com"
-              className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            />
-          </div>
-          <div className="space-y-2 md:col-span-2">
-            <label htmlFor="student-password" className="text-sm font-medium text-slate-700">
-              Mot de passe provisoire
-            </label>
-            <input
-              id="student-password"
-              type="password"
-              placeholder="••••••••"
-              className="w-full rounded-lg border border-slate-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <label htmlFor="notes" className="text-sm font-medium text-slate-700">
-              Notes internes (facultatif)
-            </label>
-            <textarea
-              id="notes"
-              rows={3}
-              placeholder="Préciser le niveau, les objectifs..."
-              className="mt-2 w-full rounded-lg border border-slate-200 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <button
-              type="submit"
-              className="inline-flex items-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark"
-            >
-              Créer l’élève
-            </button>
-          </div>
-        </form>
+        <AddStudentForm />
       </section>
     </section>
   );
